@@ -758,6 +758,66 @@
                 opacity: 0;
             }
         }
+
+        /* Loading animation styles */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.loader-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+.loader-content p {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ff4e7b;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Content styles (hidden initially) */
+.content {
+    padding: 20px;
+    text-align: center;
+}
     </style>
 </head>
 <body>
@@ -1111,6 +1171,14 @@
             <p>&copy; 2024 Phoenix Club. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <div class="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h3>Loading Phoenix...</h3>
+            <p>Please wait sir, Phoenix is getting ready for you</p>
+        </div>
+    </div>
     
     <script>
         // Mobile Navigation Toggle
@@ -1174,6 +1242,44 @@
                 }
             });
         });
+
+        // Option 1: Simple timeout (disappears after exactly 3 seconds)
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.querySelector('.loader').style.opacity = '0';
+        setTimeout(function() {
+            document.querySelector('.loader').style.display = 'none';
+            document.querySelector('.content').style.display = 'block';
+        }, 500); // fade out duration
+    }, 3000); // show for 3 seconds (3000ms)
+});
+
+// Option 2: Wait for both minimum time AND page load (recommended)
+/*
+let pageLoaded = false;
+let minTimeElapsed = false;
+const minDisplayTime = 2000; // 2 seconds minimum
+
+window.addEventListener('load', function() {
+    pageLoaded = true;
+    tryHideLoader();
+});
+
+setTimeout(function() {
+    minTimeElapsed = true;
+    tryHideLoader();
+}, minDisplayTime);
+
+function tryHideLoader() {
+    if (pageLoaded && minTimeElapsed) {
+        document.querySelector('.loader').style.opacity = '0';
+        setTimeout(function() {
+            document.querySelector('.loader').style.display = 'none';
+            document.querySelector('.content').style.display = 'block';
+        }, 500);
+    }
+}
+*/
     </script>
 </body>
 </html>
