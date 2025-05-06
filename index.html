@@ -469,6 +469,81 @@
             box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
         }
         
+        /* Ventures Section */
+        .ventures {
+            background-color: var(--light);
+        }
+        
+        .ventures-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .venture-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .venture-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .venture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .venture-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .venture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .venture-card:hover .venture-image img {
+            transform: scale(1.1);
+        }
+        
+        .venture-info {
+            padding: 25px;
+        }
+        
+        .venture-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .venture-info p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .venture-link {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .venture-link:hover {
+            color: var(--dark);
+        }
+        
         /* Footer */
         footer {
             background-color: var(--dark);
@@ -660,29 +735,29 @@
         }
 
         .hero-content {
-  font-size: 24px;
-  padding: 20px;
-  text-align: center;
-  animation: fadeCycle 10s infinite;
-}
+            font-size: 24px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeCycle 10s infinite;
+        }
 
-@keyframes fadeCycle {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+        @keyframes fadeCycle {
+            0% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -697,6 +772,7 @@
             <a href="#services">What We Do</a>
             <a href="#events">Events</a>
             <a href="#team">Our Team</a>
+            <a href="#ventures">Our Ventures</a>
             <a href="#join">Join Us</a>
         </div>
     </nav>
@@ -947,8 +1023,56 @@
         </div>
     </section>
     
-    <!-- Join Us Section -->
+    <!-- Our Ventures Section -->
+    <section class="ventures" id="ventures">
+        <div class="section-title">
+            <h2>Our Ventures</h2>
+        </div>
+        <div class="ventures-container">
+            <div class="venture-card">
+                <div class="venture-image">
+                    <img src="img/Ventures/vtx.png" alt="Phoenix Productions">
+                </div>
+                <div class="venture-info">
+                    <h3>VTXON BLAZE</h3>
+                    <p>VTXon Blaze is our flagship event, blending music, culture, and tech into one unforgettable experience.</p>
+                    <a href="https://vtx-one.vercel.app/" target="_blank" class="venture-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="venture-card">
+                <div class="venture-image">
+                    <img src="img/ventures/video_editing.webp" alt="Ignite Labs">
+                </div>
+                <div class="venture-info">
+                    <h3>ClipCult</h3>
+                    <p>ClipCult delivers pro video editing, engaging reels, stunning graphics, and unique brand promos — all crafted to boost your brand’s impact.</p>
+                    <a href="https://clip-cult.vercel.app/" target="_blank" class="venture-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="venture-card">
+                <div class="venture-image">
+                    <img src="img/ventures/HelpHub.png" alt="Phoenix Media">
+                </div>
+                <div class="venture-info">
+                    <h3>HelpHub</h3>
+                    <p>HelpHub – One-stop platform for student support: academic help, second-hand goods, and budget PGs.
+                    </p>
+                    <a href="https://help-hub-nf2j.vercel.app/" target="_blank" class="venture-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="venture-card">
+                <div class="venture-image">
+                    <img src="img/ventures/coming_soon.avif" alt="The Phoenix Foundation">
+                </div>
+                <div class="venture-info">
+                    <h3></p>
+                    <a href="#" class="venture-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+   
     
     <!-- Footer -->
     <footer>
@@ -970,6 +1094,7 @@
                     <li><a href="#services">What We Do</a></li>
                     <li><a href="#events">Past Events</a></li>
                     <li><a href="#team">Our Team</a></li>
+                    <li><a href="#ventures">Our Ventures</a></li>
                     <li><a href="#join">Join Us</a></li>
                 </ul>
             </div>
@@ -1015,7 +1140,7 @@
         
         // Scroll animations
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.service-card, .stat-item, .gallery-item, .team-member');
+            const elements = document.querySelectorAll('.service-card, .stat-item, .gallery-item, .team-member, .venture-card');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
